@@ -378,7 +378,7 @@ type PayloadItem = {
 interface ChartTooltipProps {
   active: boolean | undefined
   payload: PayloadItem[]
-  label: string
+  label: string | number | undefined
   valueFormatter: (value: number) => string
 }
 
@@ -554,7 +554,7 @@ const AreaChart = React.forwardRef<HTMLDivElement, AreaChartProps>(
     const areaId = React.useId()
 
     const prevActiveRef = React.useRef<boolean | undefined>(undefined)
-    const prevLabelRef = React.useRef<string | undefined>(undefined)
+    const prevLabelRef = React.useRef<string | undefined | number>(undefined)
 
     const getFillContent = ({
       fillType,
