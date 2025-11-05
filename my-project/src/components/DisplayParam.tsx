@@ -15,7 +15,7 @@ function DisplayParam({value,label,size="default"}:DisplayParamProps) {
           </p>
           <div className="text-2xl font-semibold text-gray-900 dark:text-gray-50 p-2" onClick={()=>{setEditMode(!editMode)}}> 
             {/* {editMode?value:<Input placeholder = {value} type="number"/>} */}
-            <Input placeholder={value} type="number" enableStepper={false}/>
+            <Input placeholder={value.toString()} type="number" enableStepper={false}/>
           </div>
         </div>
     </div>

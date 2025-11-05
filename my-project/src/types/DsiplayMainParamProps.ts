@@ -1,5 +1,5 @@
 export interface DisplayParamProps{
-    value:number
+    value:number | undefined
     label:string
     size?:"small" | "default"
 }

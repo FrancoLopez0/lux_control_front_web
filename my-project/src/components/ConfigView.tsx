@@ -3,22 +3,12 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/Tabs";
 import {Rtc} from "@/components/Rtc"
 import DisplayParam from "./DisplayParam";
 import { Button } from "./Button";
-
-interface ConfigParams {
-    setPoint:number
-    finalSetPoint:number
-    riseTime:number
-    kp:number
-    ki:number
-    kd:number
-    q:number
-    r:number
-    beta:number
-}
+import { useState } from 'react';
+import { ConfigParams } from '@/types/ConfigParams';
 
 function ConfigView() {
 
-    const params:ConfigParams = {
+    const [params, setParams] = useState<ConfigParams>({
         setPoint:2.5,
         finalSetPoint:2.5,
         riseTime:2.5,
@@ -28,7 +18,7 @@ function ConfigView() {
         q:2.5,
         r:2.5,
         beta:2.5
-    }
+    })
 
   return (
     <div>        
