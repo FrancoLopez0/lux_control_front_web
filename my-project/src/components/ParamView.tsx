@@ -1,10 +1,10 @@
 "use client"
 
 import { Card } from "@/components/Card";
-
 import LuxViewer from "./LuxViewer";
 import ConfigView from "./ConfigView";
 import { useWebSocketData } from "@/providers/WebSocketProvider";
+
 
 function ParamView() {
 

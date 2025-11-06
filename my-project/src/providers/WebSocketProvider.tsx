@@ -6,6 +6,7 @@ import { FilterValue } from '@/types/FilterValue';
 import { PidValue } from '@/types/PidValue';
 import { SensorValue } from '@/types/SensorValue';
 import { ControlValue } from '@/types/ControlValue';
+import axios from 'axios';
 
 interface WebSocketProviderProps{
     children: React.ReactNode;

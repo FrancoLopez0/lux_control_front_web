@@ -3,22 +3,24 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/Tabs";
 import {Rtc} from "@/components/Rtc"
 import DisplayParam from "./DisplayParam";
 import { Button } from "./Button";
+import { useWebSocketData } from '@/providers/WebSocketProvider';
+import { UserLuxParams } from '@/types/UserLuxParams';
+import { PidValue } from '@/types/PidValue';
+import { FilterValue } from '@/types/FilterValue';
 import { useState } from 'react';
-import { ConfigParams } from '@/types/ConfigParams';
+
+interface FormUser {
+  userParams:UserLuxParams,
+  pidValue:PidValue,
+  filterValue:FilterValue
+}
 
 function ConfigView() {
 
-    const [params, setParams] = useState<ConfigParams>({
-        setPoint:2.5,
-        finalSetPoint:2.5,
-        riseTime:2.5,
-        kp:2.5,
-        ki:2.5,
-        kd:2.5,
-        q:2.5,
-        r:2.5,
-        beta:2.5
-    })
+  const {userParams, pidValue, filterValue} = useWebSocketData()
+  const [value, setValue] = useState(0)
+
+  const [form, setForm] = useState<FormUser|null>(null)
 
   return (
     <div>        
@@ -26,7 +28,7 @@ function ConfigView() {
             <div className="flex justify-center">
               <TabsList variant="solid" className="gap-5">
                   <div className="px-3">
-                    <TabsTrigger value="tab1">Control</TabsTrigger>
+                    <TabsTrigger value="tab1">Params</TabsTrigger>
                     <TabsTrigger value="tab2">PID</TabsTrigger>
                     <TabsTrigger value="tab3">Filter</TabsTrigger>
                     <TabsTrigger value="tab4">RTC</TabsTrigger>
@@ -40,9 +42,10 @@ function ConfigView() {
                 className="space-y-2 text-sm leading-7 text-gray-600 dark:text-gray-500"
               >
                <div className="grid grid-cols-3 justify-items-center bg-gray-900 rounded-md p-5 gap-5" >
-                <DisplayParam label="SP" value={params.setPoint}/>
-                <DisplayParam label="SP_F" value={params.finalSetPoint}/>
-                <DisplayParam label="Time" value={params.riseTime}/>
+                <p>{value}</p>
+                <DisplayParam label="SP" value={userParams?.setPoint} setValue={setValue}/>
+                <DisplayParam label="SP_F" value={userParams?.setPointFinal}/>
+                <DisplayParam label="Time" value={userParams?.riseTime}/>
                </div>
               </TabsContent>
               <TabsContent
@@ -50,9 +53,9 @@ function ConfigView() {
                 className="space-y-2 text-sm leading-7 text-gray-600 dark:text-gray-500"
               >
                <div className="grid grid-cols-3 justify-items-center bg-gray-900 rounded-md p-5 gap-5" >
-                <DisplayParam label="Kp" value={params.kp}/>
-                <DisplayParam label="Ki" value={params.ki}/>
-                <DisplayParam label="Kd" value={params.kd}/>
+                <DisplayParam label="Kp" value={pidValue?.kp}/>
+                <DisplayParam label="Ki" value={pidValue?.ki}/>
+                <DisplayParam label="Kd" value={pidValue?.kd}/>
                </div>
               </TabsContent>
               <TabsContent
@@ -60,9 +63,9 @@ function ConfigView() {
                 className="space-y-2 text-sm leading-7 text-gray-600 dark:text-gray-500"
               >
                 <div className="grid grid-cols-3 justify-items-center bg-gray-900 rounded-md p-5 gap-5">
-                  <DisplayParam label="Q" value={params.q}/>
-                  <DisplayParam label="R" value={params.r}/>
-                  <DisplayParam label="Beta" value={params.beta}/>
+                  <DisplayParam label="Q" value={filterValue?.q}/>
+                  <DisplayParam label="R" value={filterValue?.r}/>
+                  <DisplayParam label="Alpha" value={filterValue?.alpha}/>
                 </div>
               </TabsContent>
               <TabsContent
