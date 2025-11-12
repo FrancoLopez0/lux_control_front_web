@@ -9,15 +9,18 @@ import { WebSocketProvider } from "@/providers/WebSocketProvider";
 export default function Home() {
 
   return (
-    <div className="h-full">
+    <div className="h-full flex justify-center ">
       <WebSocketProvider>
-        <div className="flex justify-between gap-5 p-5 light:bg-blue-200">
+        {/* <div className="flex justify-between gap-5 p-5 light:bg-blue-200">
           <ParamView></ParamView>
           <div className="w-2/3">
-            <Card className="h-full grid p-10">
+            {/* <Card className="h-full grid p-10">
               <LuxAreaChart/>
-            </Card>
+            </Card> 
           </div>
+        </div> */}
+        <div>
+          <ParamView/>
         </div>
       </WebSocketProvider>
 

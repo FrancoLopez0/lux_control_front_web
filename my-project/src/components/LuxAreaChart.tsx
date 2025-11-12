@@ -121,6 +121,19 @@ export const LuxAreaChart = () => {
             />
         </div>
       </div>
+      <div className="flex justify-center">
+        <div className="flex flex-col gap-4">
+          <p className="mx-auto font-mono text-sm font-medium">PID</p>
+          <AreaChart
+            type="default"
+            className="h-52 w-200"
+            data={luxValues}
+            index="time"
+            categories={["lux"]}
+            showLegend={false}
+            />
+        </div>
+      </div>
       {/* {types.map((type, index) => (
         <div key={index} className="flex justify-center">
         <div key={index} className="flex flex-col gap-4">

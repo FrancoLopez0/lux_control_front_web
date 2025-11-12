@@ -11,12 +11,13 @@ function ParamView() {
     const {userParams} = useWebSocketData()
 
   return (
-    <div className="w-1/3">
-
-        <Card className="flex justify-center">
-          <LuxViewer user={userParams}/>
-        </Card>
-        <div className="pt-5">
+    <div className="flex p-10 gap-10 justify-center">
+        <div className="">
+          <Card className="flex justify-center">
+            <LuxViewer user={userParams}/>
+          </Card>
+        </div>
+        <div className="w-2/3">
             <Card className="p-10">
                 <ConfigView/>
             </Card>
