@@ -9,6 +9,7 @@ import { ProgressCircle } from "@/components/ProgressCircle";
 import DisplayMainParam from "./DisplayMainParam";
 import { useState } from 'react';
 import { useWebSocketData } from '@/providers/WebSocketProvider';
+import axios from 'axios';
 
 const circleSetStyle = (lux:number|undefined,max:number|undefined,min:number|undefined)=>{
 
@@ -19,11 +20,25 @@ const circleSetStyle = (lux:number|undefined,max:number|undefined,min:number|und
     return "default"
 } 
 
+
+const http = axios.create({ baseURL: 'http://localhost:8000/' });
+
 function LuxViewer() {
   
     const [controlState,setControlState] = useState<boolean>(false)
     const {userParams, luxValue} = useWebSocketData()
   
+    const toggleControl = async () => {
+        try{
+            const r = await http.post("/toggle");
+            setControlState(!controlState);
+            return r;
+        }catch(error){
+            throw error;
+        }
+    }
+
+
     return (
             <div>
                 <div className="flex flex-col gap-5">
@@ -52,7 +67,7 @@ function LuxViewer() {
 
                 <div className="flex justify-center">
                   <div className="flex justify-center items-center ">
-                    <Switch id="sw_control" checked={controlState} onClick={()=>setControlState(!controlState)}></Switch>
+                    <Switch id="sw_control" checked={controlState} onClick={()=>toggleControl()}></Switch>
                     <Label htmlFor="sw_control">Control</Label>
                   </div>
                 </div>

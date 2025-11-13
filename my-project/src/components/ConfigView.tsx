@@ -72,12 +72,12 @@ function ConfigView() {
       <form onSubmit={handleSubmit(onSubmit)}>  
         <div className='grid grid-cols-2 gap-10'>   
           <div className="grid w-100 grid-cols-3 justify-items-center bg-gray-900 rounded-md p-5 gap-5" >
-              <DisplayParam step="0.01" min="0" label="Kp" value={form?.pidValue.kp}{...register("pidValue.kp", {valueAsNumber: true})}/>
-              <DisplayParam step="0.01" min="0" label="Ki" value={form?.pidValue.ki}{...register("pidValue.ki", {valueAsNumber: true})}/>
-              <DisplayParam step="0.01" min="0" label="Kd" value={form?.pidValue.kd}{...register("pidValue.kd", {valueAsNumber: true})}/>
-              <DisplayParam step="0.01" min="0" label="Q" onSubmit={()=>{console.log("Enter")}} value={form?.filterValue.q}{...register("filterValue.q", {valueAsNumber: true})}/>
-              <DisplayParam step="0.01" min="0" label="R" value={form?.filterValue.r}{...register("filterValue.r", {valueAsNumber: true})}/>
-              <DisplayParam step="0.01" min="0" label="Alpha" value={form?.filterValue.alpha}{...register("filterValue.alpha", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="Kp" value={form?.pidValue.kp}{...register("pidValue.kp", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="Ki" value={form?.pidValue.ki}{...register("pidValue.ki", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="Kd" value={form?.pidValue.kd}{...register("pidValue.kd", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="Q" onSubmit={()=>{console.log("Enter")}} value={form?.filterValue.q}{...register("filterValue.q", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="R" value={form?.filterValue.r}{...register("filterValue.r", {valueAsNumber: true})}/>
+              <DisplayParam step="0.00001" min="0" label="Alpha" value={form?.filterValue.alpha}{...register("filterValue.alpha", {valueAsNumber: true})}/>
           </div>
 
           <div className="grid w-100 grid-cols-3 justify-items-center bg-gray-900 rounded-md p-5 gap-5" >
